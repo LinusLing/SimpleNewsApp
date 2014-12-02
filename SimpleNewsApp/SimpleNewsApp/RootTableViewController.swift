@@ -7,16 +7,39 @@
 //
 
 import UIKit
+import Social
 
 class RootTableViewController: UITableViewController {
     var dataSource = []
-    var thumbQueue = NSOperationQueue()
+    var imgQueue = NSOperationQueue()
     let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/"
+    
+    @IBOutlet var img: UIImageView!
+    func loadImage() {
+        let newsItem = dataSource[0] as XHNewsItem
+        let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: { response, data, error in
+            let image = UIImage.init(data :data)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.img.image = image
+            })
+        })
+    }
+    
+    @IBAction func shareDidTapped(sender: AnyObject) {
+        let controller: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
+        controller.setInitialText("一起来看最新的军事新闻吧，就在GitHub上https://github.com/kevin833752/SimpleNewsApp")
+
+        controller.addImage(self.img.image)
+        self.presentViewController(controller, animated: true,completion: nil)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadDataSource()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,38 +90,15 @@ class RootTableViewController: UITableViewController {
                     newsItem.newsImg = currentNews["img"] as NSString
                     newsItem.newsURL = currentNews["url"] as NSString
                     currentNewsDataSource.addObject(newsItem)
-                    println(newsItem.newsTitle)
+//                    println(newsItem.newsTitle)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.dataSource = currentNewsDataSource
                         self.tableView.reloadData()
                     })
                 }
+
             }
         })
-    
-        //        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: {(response:NSURLResponse!,data:NSData!,error:NSError!)->Void  in
-        //        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler: { response, data, error in
-        //            let json = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-        //            println(json)
-        //            let newsDataSource = json["item"] as NSArray
-        //            var currentNewsDataSource = NSMutableArray()
-        //            for currentNews : AnyObject in newsDataSource {
-        //                let newsItem = XHNewsItem()
-        //                newsItem.newsTitle = currentNews["title"] as NSString
-        //                newsItem.newsThumb = currentNews["thumb"] as NSString
-        //                newsItem.newsID = currentNews["id"] as NSString
-        //                currentNewsDataSource.addObject(newsItem)
-        //                println(newsItem.newsTitle)
-        //                dispatch_async(dispatch_get_main_queue(), {
-        //                    self.dataSource = currentNewsDataSource
-        //                    self.tableView.reloadData()
-        //                })
-        //            }
-        //        })
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return dataSource.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,15 +109,17 @@ class RootTableViewController: UITableViewController {
         let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         let newsItem = dataSource[indexPath.row] as XHNewsItem
         cell.textLabel.text = newsItem.newsTitle
-        cell.imageView.image = UIImage(named :"cell_photo_default_small")
+        cell.imageView.image = UIImage(named :"cell_photo")
         cell.imageView.contentMode = UIViewContentMode.ScaleAspectFit
         let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: thumbQueue, completionHandler: { response, data, error in
+        NSURLConnection.sendAsynchronousRequest(request, queue: imgQueue, completionHandler: { response, data, error in
             let image = UIImage.init(data :data)
+            
             dispatch_async(dispatch_get_main_queue(), {
                 cell.imageView.image = image
             })
         })
+        loadImage()
         return cell
     }
     

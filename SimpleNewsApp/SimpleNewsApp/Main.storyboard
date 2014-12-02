@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Root Table View Controller-->
+        <!--军事新闻-->
         <scene sceneID="d5n-Ax-aQH">
             <objects>
                 <tableViewController id="67R-Go-fmq" customClass="RootTableViewController" customModule="SimpleNewsApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,11 +25,24 @@
                             <outlet property="delegate" destination="67R-Go-fmq" id="HRx-bo-QJ1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KeR-AV-nMr"/>
+                    <navigationItem key="navigationItem" title="军事新闻" id="KeR-AV-nMr">
+                        <barButtonItem key="rightBarButtonItem" title="分享" id="DON-95-qsR">
+                            <connections>
+                                <action selector="shareDidTapped:" destination="67R-Go-fmq" id="JQA-Br-qlj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="img" destination="c3c-GI-KfB" id="0nx-q2-w7H"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCo-ls-qeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="c3c-GI-KfB">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </objects>
             <point key="canvasLocation" x="731.5" y="367.5"/>
         </scene>
