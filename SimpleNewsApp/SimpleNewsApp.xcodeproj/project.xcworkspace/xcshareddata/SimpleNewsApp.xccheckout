@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>149198AB-8AD4-4DC9-AE77-D3E37A0FA2ED</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SimpleNewsApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ECF7631AB95658A7B28B89AF0DABA9A09594B4C2</key>
+		<string>github.com:kevin833752/SimpleNewsApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SimpleNewsApp/SimpleNewsApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ECF7631AB95658A7B28B89AF0DABA9A09594B4C2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:kevin833752/SimpleNewsApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ECF7631AB95658A7B28B89AF0DABA9A09594B4C2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ECF7631AB95658A7B28B89AF0DABA9A09594B4C2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SimpleNewsApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>
