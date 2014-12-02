@@ -9,6 +9,7 @@
 import Foundation
 class XHNewsItem {
     var newsTitle = NSString()
-    var newsThumb = NSString()
-    var newsID = NSString()
+    var newsTime = NSString()
+    var newsImg = NSString()
+    var newsURL = NSString()
 }

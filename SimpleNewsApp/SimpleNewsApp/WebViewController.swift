@@ -9,12 +9,12 @@
 import UIKit
 
 class WebViewController: UIViewController {
-    var detailID = NSString()
-    var detailURL = "http://qingbin.sinaapp.com/api/html/"
+    var newsURL = NSString()
+
     var webView : UIWebView?
     
     func loadDataSource() {
-        var urlString = detailURL + "\(detailID).html"
+        var urlString = newsURL
         var url = NSURL(string: urlString)
         var urlRequest = NSURLRequest(URL :NSURL(string: urlString)!)
         println(url!)
