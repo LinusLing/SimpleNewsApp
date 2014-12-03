@@ -12,7 +12,7 @@ import Social
 class RootTableViewController: UITableViewController {
     var dataSource = []
     var imgQueue = NSOperationQueue()
-    let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/"
+    let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api"
     
     @IBOutlet var img: UIImageView!
     func loadImage() {
