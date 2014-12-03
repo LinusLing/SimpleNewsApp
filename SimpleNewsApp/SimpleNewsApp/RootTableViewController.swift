@@ -14,8 +14,10 @@ class RootTableViewController: UITableViewController {
     var imgQueue = NSOperationQueue()
     let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api"
     
+    @IBOutlet var newsTableView: UITableView!
+    
     @IBOutlet var img: UIImageView!
-    func loadImage() {
+    func loadSharingImage() {
         let newsItem = dataSource[0] as XHNewsItem
         let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: { response, data, error in
@@ -34,12 +36,25 @@ class RootTableViewController: UITableViewController {
         self.presentViewController(controller, animated: true,completion: nil)
         
     }
+    // 刷新数据
+    func refreshData() {
+        println("refreshing")
+        loadDataSource()
+        self.newsTableView.reloadData()
+        self.refreshControl!.endRefreshing()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         loadDataSource()
         
+        //添加刷新
+        self.refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "松手刷新新闻")
+        refreshControl!.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+        self.newsTableView.addSubview(refreshControl!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -96,7 +111,6 @@ class RootTableViewController: UITableViewController {
                         self.tableView.reloadData()
                     })
                 }
-
             }
         })
     }
@@ -105,21 +119,29 @@ class RootTableViewController: UITableViewController {
         return dataSource.count
     }
     
+    override func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 1
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         let newsItem = dataSource[indexPath.row] as XHNewsItem
-        cell.textLabel.text = newsItem.newsTitle
-        cell.imageView.image = UIImage(named :"cell_photo")
-        cell.imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        cell.textLabel?.text = newsItem.newsTitle
+        cell.imageView?.image = UIImage(named :"cell_photo")
+        cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: imgQueue, completionHandler: { response, data, error in
             let image = UIImage.init(data :data)
-            
+
             dispatch_async(dispatch_get_main_queue(), {
-                cell.imageView.image = image
+                cell.imageView!.image = image
             })
         })
-        loadImage()
+        loadSharingImage()
         return cell
     }
     
