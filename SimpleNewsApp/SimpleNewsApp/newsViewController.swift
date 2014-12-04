@@ -1,67 +1,48 @@
 //
-//  ViewController.swift
+//  newsViewController.swift
 //  SimpleNewsApp
 //
-//  Created by Linus on 14-11-29.
+//  Created by Linus on 14-12-4.
 //  Copyright (c) 2014年 Linus. All rights reserved.
 //
 
 import UIKit
 import Social
 
-class RootTableViewController: UITableViewController {
+class newsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var refreshControl = UIRefreshControl()
     var dataSource = []
     var imgQueue = NSOperationQueue()
     let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api"
     
-    @IBOutlet var newsTableView: UITableView!
+    @IBOutlet weak var newsTableView: UITableView!
     
     @IBOutlet var img: UIImageView!
-    func loadSharingImage() {
-        let newsItem = dataSource[0] as XHNewsItem
-        let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: { response, data, error in
-            let image = UIImage.init(data :data)
-            dispatch_async(dispatch_get_main_queue(), {
-                self.img.image = image
-            })
-        })
-    }
     
-    @IBAction func shareDidTapped(sender: AnyObject) {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeSinaWeibo) {
-            var controller: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
-            controller.setInitialText("最新的军事新闻，你值得拥有，尽在GitHub上https://github.com/kevin833752/SimpleNewsApp或者关注我的博客http://blogoflinus.sinaapp.com")
-            controller.addImage(self.img.image)
-            self.presentViewController(controller, animated: true,completion: nil)
-        }
-    }
-    // 刷新数据
     func refreshData() {
-        println("refreshing")
         loadDataSource()
         self.newsTableView.reloadData()
-        self.refreshControl!.endRefreshing()
+        refreshControl.endRefreshing()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        newsTableView.dataSource = self
+        newsTableView.delegate = self
+        
         loadDataSource()
         
-        //添加刷新
-        self.refreshControl = UIRefreshControl()
-        refreshControl!.attributedTitle = NSAttributedString(string: "松手刷新新闻")
-        refreshControl!.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
-        self.newsTableView.addSubview(refreshControl!)
+        refreshControl.attributedTitle = NSAttributedString(string: "松手刷新新闻")
+        refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+        self.newsTableView.addSubview(refreshControl)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     func loadDataSource() {
         var url = hackerNewsApiUrl.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
@@ -105,29 +86,30 @@ class RootTableViewController: UITableViewController {
                     newsItem.newsImg = currentNews["img"] as NSString
                     newsItem.newsURL = currentNews["url"] as NSString
                     currentNewsDataSource.addObject(newsItem)
-                    //                    println(newsItem.newsTitle)
+                    println(newsItem.newsTitle)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.dataSource = currentNewsDataSource
-                        self.tableView.reloadData()
+                        
+                        self.newsTableView.reloadData()
                     })
                 }
+                
             }
         })
     }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
         return 1
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         let newsItem = dataSource[indexPath.row] as XHNewsItem
         cell.textLabel?.text = newsItem.newsTitle
@@ -141,28 +123,21 @@ class RootTableViewController: UITableViewController {
                 cell.imageView!.image = image
             })
         })
-        if indexPath.row == 0 {
-            println("loading")
-            loadSharingImage()
-        }
-        
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var row = indexPath.row as Int
         var data = self.dataSource[row] as XHNewsItem
         //入栈
         var webview = WebViewController()
         webview.newsURL = data.newsURL
-        //取导航控制器,添加subView
-        self.navigationController?.pushViewController(webview, animated: true)
+        webview.newsImg = data.newsImg
+        self.presentViewController(webview, animated: true, completion: nil)
     }
     
-    
 }
-

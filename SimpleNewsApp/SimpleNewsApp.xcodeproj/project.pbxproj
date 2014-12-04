@@ -8,13 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		153432411A29DE7B002E0FFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153432401A29DE7B002E0FFC /* AppDelegate.swift */; };
-		153432481A29DE7B002E0FFC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 153432471A29DE7B002E0FFC /* Images.xcassets */; };
 		1534324B1A29DE7B002E0FFC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153432491A29DE7B002E0FFC /* LaunchScreen.xib */; };
 		153432571A29DE7B002E0FFC /* SimpleNewsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153432561A29DE7B002E0FFC /* SimpleNewsAppTests.swift */; };
 		153432651A29E107002E0FFC /* XHNewsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153432641A29E107002E0FFC /* XHNewsItem.swift */; };
 		153432671A29E498002E0FFC /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153432661A29E498002E0FFC /* RootTableViewController.swift */; };
 		153432691A29EDFA002E0FFC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153432681A29EDFA002E0FFC /* WebViewController.swift */; };
 		1534326B1A29F58C002E0FFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1534326A1A29F58C002E0FFC /* Main.storyboard */; };
+		15512D401A30306E00E0EDA3 /* RAMBounceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D371A30306E00E0EDA3 /* RAMBounceAnimation.swift */; };
+		15512D411A30306E00E0EDA3 /* RAMFrameItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D391A30306E00E0EDA3 /* RAMFrameItemAnimation.swift */; };
+		15512D421A30306E00E0EDA3 /* RAMRotationAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D3B1A30306E00E0EDA3 /* RAMRotationAnimation.swift */; };
+		15512D431A30306E00E0EDA3 /* RAMTransitionItemAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D3D1A30306E00E0EDA3 /* RAMTransitionItemAnimation.swift */; };
+		15512D441A30306E00E0EDA3 /* RAMAnimatedTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D3E1A30306E00E0EDA3 /* RAMAnimatedTabBarController.swift */; };
+		15512D451A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D3F1A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift */; };
+		15512D491A3038CD00E0EDA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15512D481A3038CD00E0EDA3 /* Images.xcassets */; };
+		15512D4B1A303C9900E0EDA3 /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4A1A303C9900E0EDA3 /* settingViewController.swift */; };
+		15512D4D1A303F6600E0EDA3 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4C1A303F6600E0EDA3 /* loginViewController.swift */; };
+		15512D4F1A306B0800E0EDA3 /* newsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4E1A306B0800E0EDA3 /* newsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +40,6 @@
 		1534323B1A29DE7B002E0FFC /* SimpleNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1534323F1A29DE7B002E0FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		153432401A29DE7B002E0FFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		153432471A29DE7B002E0FFC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1534324A1A29DE7B002E0FFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		153432501A29DE7B002E0FFC /* SimpleNewsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleNewsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		153432551A29DE7B002E0FFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +48,16 @@
 		153432661A29E498002E0FFC /* RootTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 		153432681A29EDFA002E0FFC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		1534326A1A29F58C002E0FFC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		15512D371A30306E00E0EDA3 /* RAMBounceAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMBounceAnimation.swift; sourceTree = "<group>"; };
+		15512D391A30306E00E0EDA3 /* RAMFrameItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMFrameItemAnimation.swift; sourceTree = "<group>"; };
+		15512D3B1A30306E00E0EDA3 /* RAMRotationAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMRotationAnimation.swift; sourceTree = "<group>"; };
+		15512D3D1A30306E00E0EDA3 /* RAMTransitionItemAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMTransitionItemAnimation.swift; sourceTree = "<group>"; };
+		15512D3E1A30306E00E0EDA3 /* RAMAnimatedTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMAnimatedTabBarController.swift; sourceTree = "<group>"; };
+		15512D3F1A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
+		15512D481A3038CD00E0EDA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
+		15512D4A1A303C9900E0EDA3 /* settingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
+		15512D4C1A303F6600E0EDA3 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		15512D4E1A306B0800E0EDA3 /* newsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = newsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +81,7 @@
 		153432321A29DE7B002E0FFC = {
 			isa = PBXGroup;
 			children = (
+				15512D341A30306E00E0EDA3 /* RAMAnimatedTabBarController */,
 				1534323D1A29DE7B002E0FFC /* SimpleNewsApp */,
 				153432531A29DE7B002E0FFC /* SimpleNewsAppTests */,
 				1534323C1A29DE7B002E0FFC /* Products */,
@@ -83,11 +102,14 @@
 			children = (
 				153432401A29DE7B002E0FFC /* AppDelegate.swift */,
 				153432661A29E498002E0FFC /* RootTableViewController.swift */,
+				15512D4A1A303C9900E0EDA3 /* settingViewController.swift */,
+				15512D4C1A303F6600E0EDA3 /* loginViewController.swift */,
+				15512D4E1A306B0800E0EDA3 /* newsViewController.swift */,
 				153432681A29EDFA002E0FFC /* WebViewController.swift */,
 				153432641A29E107002E0FFC /* XHNewsItem.swift */,
 				1534326A1A29F58C002E0FFC /* Main.storyboard */,
-				153432471A29DE7B002E0FFC /* Images.xcassets */,
 				153432491A29DE7B002E0FFC /* LaunchScreen.xib */,
+				15512D481A3038CD00E0EDA3 /* Images.xcassets */,
 				1534323E1A29DE7B002E0FFC /* Supporting Files */,
 			);
 			path = SimpleNewsApp;
@@ -116,6 +138,59 @@
 				153432551A29DE7B002E0FFC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15512D341A30306E00E0EDA3 /* RAMAnimatedTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				15512D351A30306E00E0EDA3 /* Animations */,
+				15512D3E1A30306E00E0EDA3 /* RAMAnimatedTabBarController.swift */,
+				15512D3F1A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift */,
+			);
+			path = RAMAnimatedTabBarController;
+			sourceTree = "<group>";
+		};
+		15512D351A30306E00E0EDA3 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				15512D361A30306E00E0EDA3 /* BounceAnimation */,
+				15512D381A30306E00E0EDA3 /* FrameAnimation */,
+				15512D3A1A30306E00E0EDA3 /* RotationAnimation */,
+				15512D3C1A30306E00E0EDA3 /* TransitionAniamtions */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		15512D361A30306E00E0EDA3 /* BounceAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				15512D371A30306E00E0EDA3 /* RAMBounceAnimation.swift */,
+			);
+			path = BounceAnimation;
+			sourceTree = "<group>";
+		};
+		15512D381A30306E00E0EDA3 /* FrameAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				15512D391A30306E00E0EDA3 /* RAMFrameItemAnimation.swift */,
+			);
+			path = FrameAnimation;
+			sourceTree = "<group>";
+		};
+		15512D3A1A30306E00E0EDA3 /* RotationAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				15512D3B1A30306E00E0EDA3 /* RAMRotationAnimation.swift */,
+			);
+			path = RotationAnimation;
+			sourceTree = "<group>";
+		};
+		15512D3C1A30306E00E0EDA3 /* TransitionAniamtions */ = {
+			isa = PBXGroup;
+			children = (
+				15512D3D1A30306E00E0EDA3 /* RAMTransitionItemAnimation.swift */,
+			);
+			path = TransitionAniamtions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,9 +273,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15512D491A3038CD00E0EDA3 /* Images.xcassets in Resources */,
 				1534326B1A29F58C002E0FFC /* Main.storyboard in Resources */,
 				1534324B1A29DE7B002E0FFC /* LaunchScreen.xib in Resources */,
-				153432481A29DE7B002E0FFC /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +294,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				153432651A29E107002E0FFC /* XHNewsItem.swift in Sources */,
+				15512D441A30306E00E0EDA3 /* RAMAnimatedTabBarController.swift in Sources */,
 				153432671A29E498002E0FFC /* RootTableViewController.swift in Sources */,
+				15512D431A30306E00E0EDA3 /* RAMTransitionItemAnimation.swift in Sources */,
+				15512D451A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift in Sources */,
+				15512D4D1A303F6600E0EDA3 /* loginViewController.swift in Sources */,
+				15512D401A30306E00E0EDA3 /* RAMBounceAnimation.swift in Sources */,
+				15512D421A30306E00E0EDA3 /* RAMRotationAnimation.swift in Sources */,
 				153432411A29DE7B002E0FFC /* AppDelegate.swift in Sources */,
+				15512D411A30306E00E0EDA3 /* RAMFrameItemAnimation.swift in Sources */,
 				153432691A29EDFA002E0FFC /* WebViewController.swift in Sources */,
+				15512D4B1A303C9900E0EDA3 /* settingViewController.swift in Sources */,
+				15512D4F1A306B0800E0EDA3 /* newsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +493,7 @@
 				1534325C1A29DE7B002E0FFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1534325D1A29DE7B002E0FFC /* Build configuration list for PBXNativeTarget "SimpleNewsAppTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +502,7 @@
 				1534325F1A29DE7B002E0FFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
