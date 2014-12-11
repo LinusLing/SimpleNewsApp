@@ -28,14 +28,6 @@ class RootTableViewController: UITableViewController {
         })
     }
     
-    @IBAction func shareDidTapped(sender: AnyObject) {
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeSinaWeibo) {
-            var controller: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
-            controller.setInitialText("最新的军事新闻，你值得拥有，尽在GitHub上https://github.com/kevin833752/SimpleNewsApp或者关注我的博客http://blogoflinus.sinaapp.com")
-            controller.addImage(self.img.image)
-            self.presentViewController(controller, animated: true,completion: nil)
-        }
-    }
     // 刷新数据
     func refreshData() {
         println("refreshing")
@@ -47,7 +39,7 @@ class RootTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        println("viewDidLoad")
         loadDataSource()
         
         //添加刷新

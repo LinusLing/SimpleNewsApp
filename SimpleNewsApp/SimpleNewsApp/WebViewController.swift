@@ -18,6 +18,8 @@ class WebViewController: UIViewController {
     var caption : UILabel?
     var button : UIButton?
     
+    var rightBarButtonItem: UIBarButtonItem?
+    
     @IBOutlet var img: UIImageView!
 
     func loadSharingPic() -> UIImage {
@@ -55,27 +57,32 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navi = UINavigationBar()
-        navi!.frame = CGRectMake(0, 0, self.view.frame.width, 80)
-        navi!.backgroundColor = UIColor.grayColor()
-        caption = UILabel()
-        caption!.frame = CGRectMake(150, self.navi!.frame.height / 2 + 3, 80, 10)
-        caption!.text = "军事新闻"
-        caption!.font = UIFont.boldSystemFontOfSize(20)
-        caption!.textAlignment = NSTextAlignment.Center
-        caption!.hidden = false
-        button = UIButton()
-        button!.frame = CGRectMake(self.view.frame.width - 60, self.navi!.frame.height / 2 - 10, 40, 40)
-        button!.titleColorForState(UIControlState.Highlighted)
-        button!.titleLabel!.font = UIFont.boldSystemFontOfSize(18)
-        button!.setTitle("分享", forState: UIControlState.Normal)
-        button!.hidden = false
-        button!.addTarget(self, action: "didShared", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(navi!)
-        navi!.addSubview(caption!)
-        navi!.addSubview(button!)
+//        navi = UINavigationBar()
+//        navi!.frame = CGRectMake(0, 0, self.view.frame.width, 80)
+//        navi!.backgroundColor = UIColor.grayColor()
+//        caption = UILabel()
+//        caption!.frame = CGRectMake(150, self.navi!.frame.height / 2 + 3, 80, 10)
+//        caption!.text = "军事新闻"
+//        caption!.font = UIFont.boldSystemFontOfSize(20)
+//        caption!.textAlignment = NSTextAlignment.Center
+//        caption!.hidden = false
+//        button = UIButton()
+//        button!.frame = CGRectMake(self.view.frame.width - 60, self.navi!.frame.height / 2 - 10, 40, 40)
+//        button!.titleColorForState(UIControlState.Highlighted)
+//        button!.titleLabel!.font = UIFont.boldSystemFontOfSize(18)
+//        button!.setTitle("分享", forState: UIControlState.Normal)
+//        button!.hidden = false
+//        button!.addTarget(self, action: "didShared", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.view.addSubview(navi!)
+//        navi!.addSubview(caption!)
+//        navi!.addSubview(button!)
+        println("viewdidload")
+        
+        rightBarButtonItem = UIBarButtonItem(image: nil, landscapeImagePhone: nil, style: UIBarButtonItemStyle.Plain, target: self, action: "didShared")
+        rightBarButtonItem!.title = "分享"
+        self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
         webView = UIWebView()
-        webView!.frame=CGRectMake(0, 80, self.view.frame.width, self.view.frame.height - 80)
+        webView!.frame=CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         webView!.backgroundColor=UIColor.grayColor()
         self.view.addSubview(webView!)
         loadDataSource()
