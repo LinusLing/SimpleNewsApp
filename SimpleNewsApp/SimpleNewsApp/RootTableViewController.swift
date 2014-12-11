@@ -151,6 +151,8 @@ class RootTableViewController: UITableViewController {
         //入栈
         var webview = WebViewController()
         webview.newsURL = data.newsURL
+        webview.newsImg = data.newsImg
+        webview.newsTitle = data.newsTitle
         //取导航控制器,添加subView
         self.navigationController?.pushViewController(webview, animated: true)
     }

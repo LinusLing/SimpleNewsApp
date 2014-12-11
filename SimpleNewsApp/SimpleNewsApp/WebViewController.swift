@@ -12,6 +12,7 @@ import Social
 class WebViewController: UIViewController {
     var newsURL = NSString()
     var newsImg = NSString()
+    var newsTitle = NSString()
 
     var webView : UIWebView?
     var navi : UINavigationBar?
@@ -41,7 +42,7 @@ class WebViewController: UIViewController {
     func didShared() {
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeSinaWeibo) {
             var controller: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
-            controller.setInitialText("最新的军事新闻，你值得拥有，关注我的GitHubhttps://github.com/kevin833752/SimpleNewsApp或者关注我的博客http://blogoflinus.sinaapp.com")
+            controller.setInitialText("\(newsTitle)\n最新的军事新闻，你值得拥有，关注我的GitHub地址: https://github.com/kevin833752/SimpleNewsApp/或者关注我的博客: http://blogoflinus.sinaapp.com")
             controller.addImage(loadSharingPic())
             self.presentViewController(controller, animated: true,completion: nil)
         }
