@@ -41,7 +41,6 @@ class settingViewController: UIViewController ,UITableViewDataSource ,UITableVie
         }else if data == "我要评分" {
             
         }else if data == "关于我们" {
-//            let aboutView = aboutViewController()
             let AboutViewControllerIdentifier = "about"
             let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
             let aboutView: aboutViewController = storyboard.instantiateViewControllerWithIdentifier(AboutViewControllerIdentifier) as aboutViewController
