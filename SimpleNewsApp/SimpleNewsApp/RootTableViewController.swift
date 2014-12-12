@@ -120,7 +120,7 @@ class RootTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView .dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         let newsItem = dataSource[indexPath.row] as XHNewsItem
         cell.textLabel?.text = newsItem.newsTitle
         cell.imageView?.image = UIImage(named :"cell_photo")
