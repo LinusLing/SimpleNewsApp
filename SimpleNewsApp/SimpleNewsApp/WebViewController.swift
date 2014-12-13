@@ -47,14 +47,6 @@ class WebViewController: UIViewController {
             self.presentViewController(controller, animated: true,completion: nil)
         }
     }
-//    @IBAction func shareDidTapped(sender: AnyObject) {
-//        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeSinaWeibo) {
-//            var controller: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
-//            controller.setInitialText("最新的军事新闻，你值得拥有，尽在GitHub上https://github.com/kevin833752/SimpleNewsApp或者关注我的博客http://blogoflinus.sinaapp.com")
-//            controller.addImage(self.img.image)
-//            self.presentViewController(controller, animated: true,completion: nil)
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +70,6 @@ class WebViewController: UIViewController {
 //        navi!.addSubview(caption!)
 //        navi!.addSubview(button!)
         println("viewdidload")
-        
         rightBarButtonItem = UIBarButtonItem(image: nil, landscapeImagePhone: nil, style: UIBarButtonItemStyle.Plain, target: self, action: "didShared")
         rightBarButtonItem!.title = "分享"
         self.navigationItem.setRightBarButtonItem(rightBarButtonItem, animated: true)
