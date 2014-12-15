@@ -24,7 +24,7 @@
 		15512D451A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D3F1A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift */; };
 		15512D491A3038CD00E0EDA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15512D481A3038CD00E0EDA3 /* Images.xcassets */; };
 		15512D4B1A303C9900E0EDA3 /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4A1A303C9900E0EDA3 /* settingViewController.swift */; };
-		15512D4D1A303F6600E0EDA3 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4C1A303F6600E0EDA3 /* loginViewController.swift */; };
+		1565ABAF1A3ECCDF00B879F7 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 		15512D3F1A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAMItemAnimationProtocol.swift; sourceTree = "<group>"; };
 		15512D481A3038CD00E0EDA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		15512D4A1A303C9900E0EDA3 /* settingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
-		15512D4C1A303F6600E0EDA3 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +106,8 @@
 				153432661A29E498002E0FFC /* RootTableViewController.swift */,
 				15512D4A1A303C9900E0EDA3 /* settingViewController.swift */,
 				151EE5831A3AA4170072AE52 /* feedbackViewController.swift */,
+				1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */,
 				151EE5851A3AC0F00072AE52 /* aboutViewController.swift */,
-				15512D4C1A303F6600E0EDA3 /* loginViewController.swift */,
 				153432681A29EDFA002E0FFC /* WebViewController.swift */,
 				153432641A29E107002E0FFC /* XHNewsItem.swift */,
 				1534326A1A29F58C002E0FFC /* Main.storyboard */,
@@ -296,12 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1565ABAF1A3ECCDF00B879F7 /* loginViewController.swift in Sources */,
 				153432651A29E107002E0FFC /* XHNewsItem.swift in Sources */,
 				15512D441A30306E00E0EDA3 /* RAMAnimatedTabBarController.swift in Sources */,
 				153432671A29E498002E0FFC /* RootTableViewController.swift in Sources */,
 				15512D431A30306E00E0EDA3 /* RAMTransitionItemAnimation.swift in Sources */,
 				15512D451A30306E00E0EDA3 /* RAMItemAnimationProtocol.swift in Sources */,
-				15512D4D1A303F6600E0EDA3 /* loginViewController.swift in Sources */,
 				15512D401A30306E00E0EDA3 /* RAMBounceAnimation.swift in Sources */,
 				15512D421A30306E00E0EDA3 /* RAMRotationAnimation.swift in Sources */,
 				153432411A29DE7B002E0FFC /* AppDelegate.swift in Sources */,
