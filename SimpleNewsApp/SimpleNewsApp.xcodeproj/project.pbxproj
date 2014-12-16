@@ -25,6 +25,8 @@
 		15512D491A3038CD00E0EDA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15512D481A3038CD00E0EDA3 /* Images.xcassets */; };
 		15512D4B1A303C9900E0EDA3 /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4A1A303C9900E0EDA3 /* settingViewController.swift */; };
 		1565ABAF1A3ECCDF00B879F7 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */; };
+		1565ABB91A3F06A400B879F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565ABB61A3F067D00B879F7 /* Alamofire.framework */; };
+		1565ABBA1A3F06A400B879F7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1565ABB61A3F067D00B879F7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +37,42 @@
 			remoteGlobalIDString = 1534323A1A29DE7B002E0FFC;
 			remoteInfo = SimpleNewsApp;
 		};
+		1565ABB51A3F067D00B879F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
+		1565ABB71A3F067D00B879F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+		1565ABBB1A3F06A400B879F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = Alamofire;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1565ABBD1A3F06A400B879F7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1565ABBA1A3F06A400B879F7 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		151EE5831A3AA4170072AE52 /* feedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +97,7 @@
 		15512D481A3038CD00E0EDA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		15512D4A1A303C9900E0EDA3 /* settingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 		1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1565ABB91A3F06A400B879F7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +122,7 @@
 		153432321A29DE7B002E0FFC = {
 			isa = PBXGroup;
 			children = (
+				1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */,
 				15512D341A30306E00E0EDA3 /* RAMAnimatedTabBarController */,
 				1534323D1A29DE7B002E0FFC /* SimpleNewsApp */,
 				153432531A29DE7B002E0FFC /* SimpleNewsAppTests */,
@@ -196,6 +236,15 @@
 			path = TransitionAniamtions;
 			sourceTree = "<group>";
 		};
+		1565ABB11A3F067D00B879F7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1565ABB61A3F067D00B879F7 /* Alamofire.framework */,
+				1565ABB81A3F067D00B879F7 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -206,10 +255,12 @@
 				153432371A29DE7B002E0FFC /* Sources */,
 				153432381A29DE7B002E0FFC /* Frameworks */,
 				153432391A29DE7B002E0FFC /* Resources */,
+				1565ABBD1A3F06A400B879F7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1565ABBC1A3F06A400B879F7 /* PBXTargetDependency */,
 			);
 			name = SimpleNewsApp;
 			productName = SimpleNewsApp;
@@ -263,6 +314,12 @@
 			mainGroup = 153432321A29DE7B002E0FFC;
 			productRefGroup = 1534323C1A29DE7B002E0FFC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1565ABB11A3F067D00B879F7 /* Products */;
+					ProjectRef = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1534323A1A29DE7B002E0FFC /* SimpleNewsApp */,
@@ -270,6 +327,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1565ABB61A3F067D00B879F7 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 1565ABB51A3F067D00B879F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1565ABB81A3F067D00B879F7 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = 1565ABB71A3F067D00B879F7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		153432391A29DE7B002E0FFC /* Resources */ = {
@@ -328,6 +402,11 @@
 			isa = PBXTargetDependency;
 			target = 1534323A1A29DE7B002E0FFC /* SimpleNewsApp */;
 			targetProxy = 153432511A29DE7B002E0FFC /* PBXContainerItemProxy */;
+		};
+		1565ABBC1A3F06A400B879F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			targetProxy = 1565ABBB1A3F06A400B879F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -425,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleNewsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleNewsApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

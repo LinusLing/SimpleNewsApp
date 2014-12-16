@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class loginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
@@ -14,6 +15,9 @@ class loginViewController: UIViewController {
     
     @IBAction func login(sender: AnyObject) {
         println("login")
+        Alamofire.request(.GET, "http://newsoflinus.sinaapp.com/api").responseJSON() {(_, _, JSON, _) in
+            println(JSON!)
+        }
     }
     
     @IBAction func backgroundTouchDown(sender: AnyObject) {
