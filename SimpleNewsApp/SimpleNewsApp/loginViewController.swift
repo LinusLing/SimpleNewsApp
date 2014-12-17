@@ -19,8 +19,14 @@ class loginViewController: UIViewController {
         Alamofire.request(.GET, "http://newsoflinus.sinaapp.com/check/\(uname)&\(upwd)").responseString() {(_, _, string, _) in
             var i = string!
             if i == "1" {
-                println("login")
+                println("1")
+                let userMainViewControllerIdentifier = "userMain"
+                let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                let userMainView: userMainViewController = storyboard.instantiateViewControllerWithIdentifier(userMainViewControllerIdentifier) as userMainViewController
+                self.navigationController?.pushViewController(userMainView, animated: true)
             }else {
+                var alert = UIAlertView(title: "出错", message: "登录出错，帐号或密码错误", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
                 println("lognotin")
             }
         }

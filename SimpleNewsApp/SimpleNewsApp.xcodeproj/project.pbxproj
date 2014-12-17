@@ -27,6 +27,7 @@
 		1565ABAF1A3ECCDF00B879F7 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */; };
 		1565ABB91A3F06A400B879F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565ABB61A3F067D00B879F7 /* Alamofire.framework */; };
 		1565ABBA1A3F06A400B879F7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1565ABB61A3F067D00B879F7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1565ABBF1A41556D00B879F7 /* userMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABBE1A41556D00B879F7 /* userMainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		15512D4A1A303C9900E0EDA3 /* settingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 		1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		1565ABBE1A41556D00B879F7 /* userMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				153432661A29E498002E0FFC /* RootTableViewController.swift */,
 				15512D4A1A303C9900E0EDA3 /* settingViewController.swift */,
 				151EE5831A3AA4170072AE52 /* feedbackViewController.swift */,
+				1565ABBE1A41556D00B879F7 /* userMainViewController.swift */,
 				1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */,
 				151EE5851A3AC0F00072AE52 /* aboutViewController.swift */,
 				153432681A29EDFA002E0FFC /* WebViewController.swift */,
@@ -379,6 +382,7 @@
 				15512D401A30306E00E0EDA3 /* RAMBounceAnimation.swift in Sources */,
 				15512D421A30306E00E0EDA3 /* RAMRotationAnimation.swift in Sources */,
 				153432411A29DE7B002E0FFC /* AppDelegate.swift in Sources */,
+				1565ABBF1A41556D00B879F7 /* userMainViewController.swift in Sources */,
 				151EE5841A3AA4170072AE52 /* feedbackViewController.swift in Sources */,
 				151EE5861A3AC0F00072AE52 /* aboutViewController.swift in Sources */,
 				15512D411A30306E00E0EDA3 /* RAMFrameItemAnimation.swift in Sources */,
