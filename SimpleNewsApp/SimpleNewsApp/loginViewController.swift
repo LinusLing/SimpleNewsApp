@@ -14,9 +14,15 @@ class loginViewController: UIViewController {
     @IBOutlet weak var pwd: UITextField!
     
     @IBAction func login(sender: AnyObject) {
-        println("login")
-        Alamofire.request(.GET, "http://newsoflinus.sinaapp.com/api").responseJSON() {(_, _, JSON, _) in
-            println(JSON!)
+        var uname = username.text
+        var upwd = pwd.text
+        Alamofire.request(.GET, "http://newsoflinus.sinaapp.com/check/\(uname)&\(upwd)").responseString() {(_, _, string, _) in
+            var i = string!
+            if i == "1" {
+                println("login")
+            }else {
+                println("lognotin")
+            }
         }
     }
     
