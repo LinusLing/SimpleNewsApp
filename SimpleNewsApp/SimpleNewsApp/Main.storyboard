@@ -355,7 +355,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAa-sh-z1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="BFk-8P-Q9N" customClass="RAMBounceAnimation" customModule="SimpleNewsApp" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2245.5" y="-8.5"/>
+            <point key="canvasLocation" x="2281.5" y="-8.5"/>
         </scene>
         <!--设置-->
         <scene sceneID="JCm-KV-JMp">

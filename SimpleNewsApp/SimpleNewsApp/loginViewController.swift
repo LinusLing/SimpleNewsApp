@@ -16,19 +16,25 @@ class loginViewController: UIViewController {
     @IBAction func login(sender: AnyObject) {
         var uname = username.text
         var upwd = pwd.text
-        Alamofire.request(.GET, "http://newsoflinus.sinaapp.com/check/\(uname)&\(upwd)").responseString() {(_, _, string, _) in
-            var i = string!
-            if i == "1" {
-                println("1")
-                let userMainViewControllerIdentifier = "userMain"
-                let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-                let userMainView: userMainViewController = storyboard.instantiateViewControllerWithIdentifier(userMainViewControllerIdentifier) as userMainViewController
-                self.navigationController?.pushViewController(userMainView, animated: true)
-            }else {
-                var alert = UIAlertView(title: "出错", message: "登录出错，帐号或密码错误", delegate: self, cancelButtonTitle: "OK")
-                alert.show()
-                println("lognotin")
-            }
+        var url : URLStringConvertible = "http://newsoflinus.sinaapp.com/check/\(uname)&\(upwd)"
+        println(url)
+        Alamofire.request(.GET, url)
+            .responseJSON { (_, _, JSON, _) in
+                var json = JSON! as NSArray
+                if json.count == 0 {
+                    var alert = UIAlertView(title: "出错", message: "登录出错，帐号或密码错误", delegate: self, cancelButtonTitle: "OK")
+                    alert.show()
+                    println("lognotin")
+                }else {
+                    var uname = json[0] as NSString
+                    var upower = json[1] as NSString
+                    let userMainViewControllerIdentifier = "userMain"
+                    let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+                    let userMainView: userMainViewController = storyboard.instantiateViewControllerWithIdentifier(userMainViewControllerIdentifier) as userMainViewController
+                    userMainView.uname = uname
+                    userMainView.upower = upower
+                    self.navigationController?.pushViewController(userMainView, animated: true)
+                }
         }
     }
     
