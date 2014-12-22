@@ -39,8 +39,7 @@ class RootTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        println("viewDidLoad")
-        loadDataSource()
+        //loadDataSource()
         
         //添加刷新
         self.refreshControl = UIRefreshControl()
@@ -60,9 +59,9 @@ class RootTableViewController: UITableViewController {
         var loadURL = NSURL(string: url!)
         println(url!)
         if loadURL != nil {
-            println("ok")
+            println("loadURL ok")
         }else{
-            println("empty")
+            println("loadURL empty")
         }
         
         let request: NSURLRequest = NSURLRequest(URL: loadURL!)
@@ -134,7 +133,7 @@ class RootTableViewController: UITableViewController {
             })
         })
         if indexPath.row == 0 {
-            println("loading")
+            println("loadingSharingImage")
             loadSharingImage()
         }
         
