@@ -8,6 +8,7 @@
 
 import Foundation
 class XHNewsItem {
+    var newsID = NSString()
     var newsTitle = NSString()
     var newsTime = NSString()
     var newsImg = NSString()

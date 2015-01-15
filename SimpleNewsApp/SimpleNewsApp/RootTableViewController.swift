@@ -9,8 +9,10 @@
 import UIKit
 import Social
 
-class RootTableViewController: UITableViewController {
-    var dataSource = []
+var filteredNews: [XHNewsItem] = []
+
+class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
+    var dataSource:[XHNewsItem] = []
     var imgQueue = NSOperationQueue()
     let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api"
     
@@ -28,6 +30,14 @@ class RootTableViewController: UITableViewController {
         })
     }
     
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        filteredNews = dataSource.filter(
+            {$0.newsTitle.rangeOfString(searchString).length != 0}
+        )
+        
+        return true
+    }
+    
     // 刷新数据
     func refreshData() {
         println("refreshing")
@@ -39,13 +49,18 @@ class RootTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //loadDataSource()
+        loadDataSource()
         
         //添加刷新
         self.refreshControl = UIRefreshControl()
+        refreshControl!.frame.size.height = 10
         refreshControl!.attributedTitle = NSAttributedString(string: "松手刷新新闻")
         refreshControl!.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
         self.newsTableView.addSubview(refreshControl!)
+        
+        var contentOffset = tableView.contentOffset
+        contentOffset.y += searchDisplayController!.searchBar.frame.size.height
+        tableView.contentOffset = contentOffset
     }
     
     override func didReceiveMemoryWarning() {
@@ -88,14 +103,14 @@ class RootTableViewController: UITableViewController {
                 }
                 
                 
-                var currentNewsDataSource = NSMutableArray()
+                var currentNewsDataSource: [XHNewsItem] = []
                 for currentNews : AnyObject in jsonResult {
                     let newsItem = XHNewsItem()
                     newsItem.newsTitle = currentNews["title"] as NSString
                     newsItem.newsTime = currentNews["time"] as NSString
                     newsItem.newsImg = currentNews["img"] as NSString
                     newsItem.newsURL = currentNews["url"] as NSString
-                    currentNewsDataSource.addObject(newsItem)
+                    currentNewsDataSource.append(newsItem)
                     //                    println(newsItem.newsTitle)
                     dispatch_async(dispatch_get_main_queue(), {
                         self.dataSource = currentNewsDataSource
@@ -107,20 +122,35 @@ class RootTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        if tableView == searchDisplayController?.searchResultsTableView {
+            return filteredNews.count
+        }else {
+            return dataSource.count
+        }
+        
     }
     
     override func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
     
+//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 0
+//    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-        let newsItem = dataSource[indexPath.row] as XHNewsItem
+        
+        var cell:UITableViewCell! = tableView.dequeueReusableCellWithIdentifier("cell") as? UITableViewCell
+        if (cell == nil) {
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        }
+        var newsItem: XHNewsItem
+        if tableView == searchDisplayController?.searchResultsTableView {
+            newsItem = filteredNews[indexPath.row]
+        }else {
+            newsItem = dataSource[indexPath.row]
+        }
+        
         cell.textLabel?.text = newsItem.newsTitle
         cell.imageView?.image = UIImage(named :"cell_photo")
         cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
@@ -140,9 +170,9 @@ class RootTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 80
-    }
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 80
+//    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var row = indexPath.row as Int
