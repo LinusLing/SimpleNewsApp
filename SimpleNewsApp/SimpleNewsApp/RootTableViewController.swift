@@ -20,6 +20,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
     
     @IBOutlet var img: UIImageView!
     func loadSharingImage() {
+        
         let newsItem = dataSource[0] as XHNewsItem
         let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: { response, data, error in
