@@ -163,10 +163,10 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                 cell.imageView!.image = image
             })
         })
-        if indexPath.row == 0 {
-            println("loadingSharingImage")
-            loadSharingImage()
-        }
+//        if indexPath.row == 0 {
+//            println("loadingSharingImage")
+//            loadSharingImage()
+//        }
         
         return cell
     }

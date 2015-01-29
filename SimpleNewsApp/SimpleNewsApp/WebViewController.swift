@@ -44,8 +44,14 @@ class WebViewController: UIViewController {
             var controller: SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeSinaWeibo)
             controller.setInitialText("\(newsTitle)\n最新的军事新闻，尽在SimpleNewsApp，关注我的博客: http://blogoflinus.sinaapp.com/ 或者关注我的GitHub地址: https://github.com/kevin833752/SimpleNewsApp/")
             controller.addImage(loadSharingPic())
-            self.presentViewController(controller, animated: true,completion: nil)
+            self.presentViewController(controller, animated: true,completion: ({
+                
+            }))
+        }else {
+            let alert = UIAlertView(title: "not shared", message: "does not have share", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
         }
+        
     }
     
     override func viewDidLoad() {
