@@ -25,8 +25,6 @@
 		15512D491A3038CD00E0EDA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15512D481A3038CD00E0EDA3 /* Images.xcassets */; };
 		15512D4B1A303C9900E0EDA3 /* settingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15512D4A1A303C9900E0EDA3 /* settingViewController.swift */; };
 		1565ABAF1A3ECCDF00B879F7 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */; };
-		1565ABB91A3F06A400B879F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1565ABB61A3F067D00B879F7 /* Alamofire.framework */; };
-		1565ABBA1A3F06A400B879F7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1565ABB61A3F067D00B879F7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1565ABBF1A41556D00B879F7 /* userMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1565ABBE1A41556D00B879F7 /* userMainViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,27 +36,6 @@
 			remoteGlobalIDString = 1534323A1A29DE7B002E0FFC;
 			remoteInfo = SimpleNewsApp;
 		};
-		1565ABB51A3F067D00B879F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
-			remoteInfo = Alamofire;
-		};
-		1565ABB71A3F067D00B879F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
-			remoteInfo = AlamofireTests;
-		};
-		1565ABBB1A3F06A400B879F7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
-			remoteInfo = Alamofire;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -68,7 +45,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1565ABBA1A3F06A400B879F7 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,7 +74,6 @@
 		15512D481A3038CD00E0EDA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		15512D4A1A303C9900E0EDA3 /* settingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingViewController.swift; sourceTree = "<group>"; };
 		1565ABAE1A3ECCDF00B879F7 /* loginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
-		1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		1565ABBE1A41556D00B879F7 /* userMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userMainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,7 +82,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1565ABB91A3F06A400B879F7 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +98,6 @@
 		153432321A29DE7B002E0FFC = {
 			isa = PBXGroup;
 			children = (
-				1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */,
 				15512D341A30306E00E0EDA3 /* RAMAnimatedTabBarController */,
 				1534323D1A29DE7B002E0FFC /* SimpleNewsApp */,
 				153432531A29DE7B002E0FFC /* SimpleNewsAppTests */,
@@ -239,15 +212,6 @@
 			path = TransitionAniamtions;
 			sourceTree = "<group>";
 		};
-		1565ABB11A3F067D00B879F7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1565ABB61A3F067D00B879F7 /* Alamofire.framework */,
-				1565ABB81A3F067D00B879F7 /* AlamofireTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,7 +227,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				1565ABBC1A3F06A400B879F7 /* PBXTargetDependency */,
 			);
 			name = SimpleNewsApp;
 			productName = SimpleNewsApp;
@@ -299,9 +262,11 @@
 				TargetAttributes = {
 					1534323A1A29DE7B002E0FFC = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = F2DVF43FC6;
 					};
 					1534324F1A29DE7B002E0FFC = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = F2DVF43FC6;
 						TestTargetID = 1534323A1A29DE7B002E0FFC;
 					};
 				};
@@ -317,12 +282,6 @@
 			mainGroup = 153432321A29DE7B002E0FFC;
 			productRefGroup = 1534323C1A29DE7B002E0FFC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 1565ABB11A3F067D00B879F7 /* Products */;
-					ProjectRef = 1565ABB01A3F067D00B879F7 /* Alamofire.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				1534323A1A29DE7B002E0FFC /* SimpleNewsApp */,
@@ -330,23 +289,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		1565ABB61A3F067D00B879F7 /* Alamofire.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Alamofire.framework;
-			remoteRef = 1565ABB51A3F067D00B879F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1565ABB81A3F067D00B879F7 /* AlamofireTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = AlamofireTests.xctest;
-			remoteRef = 1565ABB71A3F067D00B879F7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		153432391A29DE7B002E0FFC /* Resources */ = {
@@ -407,11 +349,6 @@
 			target = 1534323A1A29DE7B002E0FFC /* SimpleNewsApp */;
 			targetProxy = 153432511A29DE7B002E0FFC /* PBXContainerItemProxy */;
 		};
-		1565ABBC1A3F06A400B879F7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			targetProxy = 1565ABBB1A3F06A400B879F7 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -443,6 +380,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -460,9 +398,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "1394b32d-09bb-4ee3-9447-88b7253f3afe";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -485,6 +424,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -496,8 +436,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "1394b32d-09bb-4ee3-9447-88b7253f3afe";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -508,10 +449,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleNewsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos8.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -521,10 +466,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = SimpleNewsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos8.1;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -533,6 +482,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -544,6 +495,7 @@
 				INFOPLIST_FILE = SimpleNewsAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNewsApp.app/SimpleNewsApp";
 			};
 			name = Debug;
@@ -552,6 +504,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -559,6 +513,7 @@
 				INFOPLIST_FILE = SimpleNewsAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNewsApp.app/SimpleNewsApp";
 			};
 			name = Release;

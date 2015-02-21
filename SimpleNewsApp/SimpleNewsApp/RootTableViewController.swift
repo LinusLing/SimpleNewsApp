@@ -41,6 +41,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
     
     // 刷新数据
     func refreshData() {
+        
         println("refreshing")
         loadDataSource()
         self.newsTableView.reloadData()
@@ -59,6 +60,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         refreshControl!.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
         self.newsTableView.addSubview(refreshControl!)
         
+        //隐藏searchBar
         var contentOffset = tableView.contentOffset
         contentOffset.y += searchDisplayController!.searchBar.frame.size.height
         tableView.contentOffset = contentOffset
