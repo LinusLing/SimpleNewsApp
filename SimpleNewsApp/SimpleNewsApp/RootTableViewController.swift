@@ -35,7 +35,6 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         filteredNews = dataSource.filter(
             {$0.newsTitle.rangeOfString(searchString).length != 0}
         )
-        
         return true
     }
     
@@ -94,7 +93,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                 //Handle data in NSData type
                 
                 var returnString:NSString?
-                returnString=NSString(data:data,encoding:NSUTF8StringEncoding)
+                returnString = NSString(data:data,encoding:NSUTF8StringEncoding)
                 
                 
                 var err: NSError?
@@ -147,6 +146,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         }
+        
         var newsItem: XHNewsItem
         if tableView == searchDisplayController?.searchResultsTableView {
             newsItem = filteredNews[indexPath.row]
