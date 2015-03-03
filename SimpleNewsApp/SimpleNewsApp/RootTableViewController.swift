@@ -17,7 +17,6 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
     let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api"
     
     @IBOutlet var newsTableView: UITableView!
-    
     @IBOutlet var img: UIImageView!
     func loadSharingImage() {
         
