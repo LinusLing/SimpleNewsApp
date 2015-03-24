@@ -103,21 +103,6 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                     println("JSON Error \(err!.localizedDescription)")
                 }
                 
-//                for currentNews : AnyObject in jsonResult {
-//                    //println("currentNews : \(currentNews)")
-//                    let newsItem = XHNewsItem()
-//                    if(currentNews["img"] as NSString == " "){
-//                        println("currentNews : \(currentNews)")
-//                        
-//                        continue
-//                    }else{
-//                        newsItem.newsImg = currentNews["img"] as NSString
-//                    }
-//                    
-//                }
-                
-                
-                
                 var currentNewsDataSource: [XHNewsItem] = []
                 for currentNews : AnyObject in jsonResult {
                     let newsItem = XHNewsItem()
