@@ -108,7 +108,6 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                     let newsItem = XHNewsItem()
                     newsItem.newsTitle = currentNews["title"] as NSString
                     newsItem.newsTime = currentNews["time"] as NSString
-                    //
                     if(currentNews["img"] as NSString == " "){
                         continue
                     }else{
