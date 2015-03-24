@@ -103,13 +103,31 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                     println("JSON Error \(err!.localizedDescription)")
                 }
                 
+//                for currentNews : AnyObject in jsonResult {
+//                    //println("currentNews : \(currentNews)")
+//                    let newsItem = XHNewsItem()
+//                    if(currentNews["img"] as NSString == " "){
+//                        println("currentNews : \(currentNews)")
+//                        
+//                        continue
+//                    }else{
+//                        newsItem.newsImg = currentNews["img"] as NSString
+//                    }
+//                    
+//                }
+                
+                
                 
                 var currentNewsDataSource: [XHNewsItem] = []
                 for currentNews : AnyObject in jsonResult {
                     let newsItem = XHNewsItem()
                     newsItem.newsTitle = currentNews["title"] as NSString
                     newsItem.newsTime = currentNews["time"] as NSString
-                    newsItem.newsImg = currentNews["img"] as NSString
+                    if(currentNews["img"] as NSString == " "){
+                        continue
+                    }else{
+                        newsItem.newsImg = currentNews["img"] as NSString
+                    }
                     newsItem.newsURL = currentNews["url"] as NSString
                     currentNewsDataSource.append(newsItem)
                     //                    println(newsItem.newsTitle)
@@ -120,6 +138,8 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                 }
             }
         })
+        
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,9 +155,9 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         return 0
     }
     
-//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 0
-//    }
+    //    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    //        return 0
+    //    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -154,6 +174,8 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         }
         
         cell.textLabel?.text = newsItem.newsTitle
+        //println(newsItem.newsImg)
+        //if((newsItem.newsImg.isEqualToString("")) && (newsItem.newsImg.isEqual(nil))){
         cell.imageView?.image = UIImage(named :"cell_photo")
         cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
@@ -164,17 +186,16 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                 cell.imageView!.image = image
             })
         })
-//        if indexPath.row == 0 {
-//            println("loadingSharingImage")
-//            loadSharingImage()
-//        }
+        //        }else{
+        //
+        //        }
         
         return cell
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 80
-//    }
+    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //        return 80
+    //    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var row = indexPath.row as Int
