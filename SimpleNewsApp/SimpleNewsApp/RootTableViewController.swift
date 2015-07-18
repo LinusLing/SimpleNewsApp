@@ -10,16 +10,18 @@ import UIKit
 import Social
 
 var filteredNews: [XHNewsItem] = []
-
+let limit = 10
 class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
     var dataSource:[XHNewsItem] = []
     var imgQueue = NSOperationQueue()
-    let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api"
+    //http://newsoflinus.sinaapp.com/api/start&limit
+    let hackerNewsApiUrl = "http://newsoflinus.sinaapp.com/api/"
+    var start = 0
     
     @IBOutlet var newsTableView: UITableView!
     @IBOutlet var img: UIImageView!
+    
     func loadSharingImage() {
-        
         let newsItem = dataSource[0] as XHNewsItem
         let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: { response, data, error in
@@ -37,31 +39,38 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         return true
     }
     
-    // 刷新数据
-    func refreshData() {
-        
-        println("refreshing")
-        loadDataSource()
-        self.newsTableView.reloadData()
-        self.refreshControl!.endRefreshing()
-    }
+//    // 刷新数据
+//    func refreshData() {
+//        
+//        println("refreshing")
+//        loadDataSource()
+//        self.newsTableView.reloadData()
+//        self.refreshControl!.endRefreshing()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        newsTableView.addLegendHeaderWithRefreshingBlock { () -> Void in
+            self.loadDataSource()
+        }
+        newsTableView.addLegendFooterWithRefreshingBlock { () -> Void in
+            self.loadDataSourceMore()
+        }
+        
         loadDataSource()
         
-        //添加刷新
-        self.refreshControl = UIRefreshControl()
-        refreshControl!.frame.size.height = 10
-        refreshControl!.attributedTitle = NSAttributedString(string: "松手刷新新闻")
-        refreshControl!.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
-        self.newsTableView.addSubview(refreshControl!)
+//        //添加刷新
+//        self.refreshControl = UIRefreshControl()
+//        refreshControl!.frame.size.height = 10
+//        refreshControl!.attributedTitle = NSAttributedString(string: "松手刷新新闻")
+//        refreshControl!.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+//        self.newsTableView.addSubview(refreshControl!)
         
         //隐藏searchBar
-        var contentOffset = tableView.contentOffset
-        contentOffset.y += searchDisplayController!.searchBar.frame.size.height
-        tableView.contentOffset = contentOffset
+//        var contentOffset = tableView.contentOffset
+//        contentOffset.y += searchDisplayController!.searchBar.frame.size.height
+//        tableView.contentOffset = contentOffset
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,9 +78,10 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    func loadDataSource() {
-        var url = hackerNewsApiUrl.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+    func loadDataSourceMore() {
+        self.start = self.start + limit
+        let a = hackerNewsApiUrl+String(start)+"&"+String(limit)
+        var url = a.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         var loadURL = NSURL(string: url!)
         println(url!)
         if loadURL != nil {
@@ -104,6 +114,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                 }
                 
                 var currentNewsDataSource: [XHNewsItem] = []
+                
                 for currentNews : AnyObject in jsonResult {
                     let newsItem = XHNewsItem()
                     newsItem.newsTitle = currentNews["title"] as NSString
@@ -114,17 +125,84 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
                         newsItem.newsImg = currentNews["img"] as NSString
                     }
                     newsItem.newsURL = currentNews["url"] as NSString
-                    currentNewsDataSource.append(newsItem)
-                    //                    println(newsItem.newsTitle)
+                    if(currentNews["imgArray"] as NSString == ";"){
+                        continue
+                    }else{
+                        newsItem.newsImgArray = (currentNews["imgArray"] as String).componentsSeparatedByString(";")
+                    }
+                    self.dataSource.append(newsItem)
+//                    currentNewsDataSource.append(newsItem)
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.dataSource = currentNewsDataSource
-                        self.tableView.reloadData()
+//                        self.dataSource = currentNewsDataSource
+                        self.newsTableView.reloadData()
+                        self.newsTableView.footer.endRefreshing()
                     })
                 }
             }
         })
+    }
+    
+    func loadDataSource() {
+        self.start = 0
+        let a = hackerNewsApiUrl+String(start)+"&"+String(limit)
+        var url = a.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        var loadURL = NSURL(string: url!)
+        println(url!)
+        if loadURL != nil {
+            println("loadURL ok")
+        }else{
+            println("loadURL empty")
+        }
         
+        let request: NSURLRequest = NSURLRequest(URL: loadURL!)
         
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{
+            (response, data, error) -> Void in
+            
+            if (error? != nil) {
+                //Handle Error here
+                println(error)
+            }else{
+                //Handle data in NSData type
+                
+                var returnString:NSString?
+                returnString = NSString(data:data,encoding:NSUTF8StringEncoding)
+                
+                
+                var err: NSError?
+                var jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &err) as NSArray
+                
+                if((err?) != nil) {
+                    // If there is an error parsing JSON, print it to the console
+                    println("JSON Error \(err!.localizedDescription)")
+                }
+                
+                var currentNewsDataSource: [XHNewsItem] = []
+
+                for currentNews : AnyObject in jsonResult {
+                    let newsItem = XHNewsItem()
+                    newsItem.newsTitle = currentNews["title"] as NSString
+                    newsItem.newsTime = currentNews["time"] as NSString
+                    if(currentNews["img"] as NSString == " "){
+                        continue
+                    }else{
+                        newsItem.newsImg = currentNews["img"] as NSString
+                    }
+                    newsItem.newsURL = currentNews["url"] as NSString
+                    if(currentNews["imgArray"] as NSString == ";"){
+                        continue
+                    }else{
+                        newsItem.newsImgArray = (currentNews["imgArray"] as String).componentsSeparatedByString(";")
+                    }
+                    currentNewsDataSource.append(newsItem)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.dataSource = currentNewsDataSource
+                        self.newsTableView.reloadData()
+                        self.newsTableView.header.endRefreshing()
+                    })
+                }
+            }
+        })
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,13 +214,13 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         
     }
     
-    override func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    //    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    //        return 0
-    //    }
+//    override func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+//        return 80
+//    }
+//    
+//    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 80
+//    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -178,9 +256,9 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         return cell
     }
     
-    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //        return 80
-    //    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80
+    }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var row = indexPath.row as Int

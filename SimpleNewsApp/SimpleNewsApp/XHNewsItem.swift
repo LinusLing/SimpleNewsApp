@@ -13,4 +13,5 @@ class XHNewsItem {
     var newsTime = NSString()
     var newsImg = NSString()
     var newsURL = NSString()
+    var newsImgArray = [String]()
 }
