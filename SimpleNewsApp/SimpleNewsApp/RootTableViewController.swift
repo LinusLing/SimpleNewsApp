@@ -50,6 +50,7 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newsTableView.tableFooterView = UIView()
         // Do any additional setup after loading the view, typically from a nib.
         newsTableView.addLegendHeaderWithRefreshingBlock { () -> Void in
             self.loadDataSource()
@@ -270,6 +271,20 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         webview.newsTitle = data.newsTitle
         //取导航控制器,添加subView
         self.navigationController?.pushViewController(webview, animated: true)
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        cell.alpha = 0
+        let x = self.view.bounds.width + cell.center.x
+        cell.center.x = x
+
+        let delay:Double = Double(indexPath.row) * 0.2
+        UIView.animateWithDuration(0.5, delay: delay, options: nil, animations: { () -> Void in
+            cell.center.x = x - self.view.bounds.width
+            cell.alpha = 1
+        }, completion: nil)
+        
     }
     
     
