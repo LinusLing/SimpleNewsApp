@@ -236,26 +236,16 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
         }else {
             newsItem = dataSource[indexPath.row]
         }
-        
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = newsItem.newsTitle
-        //println(newsItem.newsImg)
-        //if((newsItem.newsImg.isEqualToString("")) && (newsItem.newsImg.isEqual(nil))){
-        cell.imageView?.image = UIImage(named :"cell_photo")
+        cell.textLabel?.sizeToFit()
+        
+        cell.imageView?.image = UIImage(data: NSData(contentsOfURL: NSURL(string: newsItem.newsImg)!)!)?.scaleToSize(CGSize(width: 200, height: 150))
         cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        let request = NSURLRequest(URL :NSURL(string: newsItem.newsImg)!)
-        NSURLConnection.sendAsynchronousRequest(request, queue: imgQueue, completionHandler: { response, data, error in
-            let image = UIImage.init(data :data)
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                cell.imageView!.image = image
-            })
-        })
-        //        }else{
-        //
-        //        }
         
         return cell
     }
+
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
@@ -276,17 +266,25 @@ class RootTableViewController: UITableViewController, UISearchDisplayDelegate {
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         cell.alpha = 0
-        let x = self.view.bounds.width + cell.center.x
-        cell.center.x = x
+        let y = self.view.bounds.height + cell.center.y
+        cell.center.y = y
 
         let delay:Double = Double(indexPath.row) * 0.2
         UIView.animateWithDuration(0.5, delay: delay, options: nil, animations: { () -> Void in
-            cell.center.x = x - self.view.bounds.width
+            cell.center.y = y - self.view.bounds.height
             cell.alpha = 1
         }, completion: nil)
         
     }
     
-    
 }
 
+extension UIImage {
+    func scaleToSize(tosize: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(tosize)
+        self.drawInRect(CGRectMake(0, 0, tosize.width, tosize.height))
+        let newImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
